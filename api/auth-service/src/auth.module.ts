@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ProxyController } from './proxy.controller';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { AuthMiddleware } from './auth.middleware';
+import { AuthMiddleware } from './middleware/auth.middleware';
 
 @Module({
   imports: [
