@@ -5,26 +5,30 @@ import { NextFunction, Request, Response } from 'express';
 import { firstValueFrom } from 'rxjs';
 
 export class AuthMiddleware implements NestMiddleware {
-   constructor(
-      private readonly httpService: HttpService,
-      private readonly configService: ConfigService
-   ) {}
-   
-   async use(req: Request, res: Response, next: NextFunction) {
-      const token = req.headers.authorization?.split(' ')[1];
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
+  ) {}
 
-      if (!token) {
-         throw new UnauthorizedException('No token provided');
-      }
+  async use(req: Request, res: Response, next: NextFunction) {
+    const token = req.headers.authorization?.split(' ')[1];
 
-      try {
-         const authServiceUrl = this.configService.get<string>('AUTH_SERVICE_URL');
+    if (!token) {
+      throw new UnauthorizedException('No token provided');
+    }
 
-         const response = await firstValueFrom(this.httpService.post(`${authServiceUrl}/auth/verify`, { token }));
-         req['user'] = response.data;
-         next();
-      } catch {
-         throw new UnauthorizedException('Invalid token');
-      }
-   }
+    try {
+      const authServiceUrl = this.configService.get<string>('AUTH_SERVICE_URL');
+
+      const response = await firstValueFrom(
+        this.httpService.post(`${authServiceUrl}/auth/verify`, {
+          token,
+        }),
+      );
+      req['user'] = response.data;
+      next();
+    } catch {
+      throw new UnauthorizedException('Invalid token');
+    }
+  }
 }
