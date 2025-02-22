@@ -1,19 +1,20 @@
 import { redirect, type LoaderFunction } from 'react-router';
-import type { Route } from './+types/home';
 import axios from '~/axios';
 import { isAxiosError } from 'axios';
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
     return [
         { title: 'Daily Pill' },
         { name: 'description', content: 'Welcome to React Router!' },
     ];
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+    const cookie = request.headers.get('cookie');
+
     try {
         // TODO: check login state in a better way
-        const x = await axios.get('/test');
+        const x = await axios.get('/test', { headers: { Cookie: cookie } });
         console.log(x);
     } catch (error) {
         console.log(error);

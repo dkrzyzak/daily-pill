@@ -53,6 +53,12 @@ importers:
       axios:
         specifier: ^1.7.9
         version: 1.7.9
+      cookie-parser:
+        specifier: ^1.4.7
+        version: 1.4.7
+      http-proxy-middleware:
+        specifier: ^3.0.3
+        version: 3.0.3
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -72,6 +78,9 @@ importers:
       '@swc/core':
         specifier: ^1.10.18
         version: 1.10.18
+      '@types/cookie-parser':
+        specifier: ^1.4.8
+        version: 1.4.8(@types/express@5.0.0)
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.0
@@ -1649,6 +1658,11 @@ packages:
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
 
+  '@types/cookie-parser@1.4.8':
+    resolution: {integrity: sha512-l37JqFrOJ9yQfRQkljb41l0xVphc7kg5JTjjr+pLRZ0IyZ49V4BQ8vbF4Ut2C2e+WH4al3xD3ZwYwIUfnbT4NQ==}
+    peerDependencies:
+      '@types/express': '*'
+
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
@@ -1672,6 +1686,9 @@ packages:
 
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
+
+  '@types/http-proxy@1.17.16':
+    resolution: {integrity: sha512-sdWoUajOB1cd0A8cRRQ1cfyWNbmFKLAqBB89Y8x5iYyG/mkJHc0YUH8pdWBy2omi9qtCpiIgGjuwO0dQST2l5w==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -2234,6 +2251,10 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
+  cookie-parser@1.4.7:
+    resolution: {integrity: sha512-nGUvgXnotP3BsjiLX2ypbQnWoGUPIIfHQNZkkC668ntrzGWEZVW70HDEB1qnNGMicPje6EttlIgzo51YSwNQGw==}
+    engines: {node: '>= 0.8.0'}
+
   cookie-signature@1.0.6:
     resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
 
@@ -2243,6 +2264,10 @@ packages:
 
   cookie@0.7.1:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
+    engines: {node: '>= 0.6'}
+
+  cookie@0.7.2:
+    resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
 
   cookie@1.0.2:
@@ -2577,6 +2602,9 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
+  eventemitter3@4.0.7:
+    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+
   events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
@@ -2872,6 +2900,14 @@ packages:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
 
+  http-proxy-middleware@3.0.3:
+    resolution: {integrity: sha512-usY0HG5nyDUwtqpiZdETNbmKtw3QQ1jwYFZ9wi5iHzX2BcILwQKtYDJPo7XHTsu5Z0B2Hj3W9NNnbd+AjFWjqg==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+
+  http-proxy@1.18.1:
+    resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
+    engines: {node: '>=8.0.0'}
+
   http2-wrapper@2.2.1:
     resolution: {integrity: sha512-V5nVw1PAOgfI3Lmeaj2Exmeg7fenjhRUgz1lPSezy1CuhPYbgQtbQj4jZfEAEMlaL+vupsvhjqCyjzob0yxsmQ==}
     engines: {node: '>=10.19.0'}
@@ -2960,6 +2996,10 @@ packages:
 
   is-plain-obj@1.1.0:
     resolution: {integrity: sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==}
+    engines: {node: '>=0.10.0'}
+
+  is-plain-object@5.0.0:
+    resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==}
     engines: {node: '>=0.10.0'}
 
   is-promise@4.0.0:
@@ -3748,6 +3788,9 @@ packages:
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+
+  requires-port@1.0.0:
+    resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
 
   resolve-alpn@1.2.1:
     resolution: {integrity: sha512-0a1F4l73/ZFZOakJnQ3FvkJ2+gSTQWz/r2KE5OdDY0TxPm5h4GkqkWWfM47T7HsbnOtcJVEF4epCVy6u7Q3K+g==}
@@ -5799,6 +5842,10 @@ snapshots:
     dependencies:
       '@types/node': 22.13.4
 
+  '@types/cookie-parser@1.4.8(@types/express@5.0.0)':
+    dependencies:
+      '@types/express': 5.0.0
+
   '@types/cookie@0.6.0': {}
 
   '@types/eslint-scope@3.7.7':
@@ -5830,6 +5877,10 @@ snapshots:
   '@types/http-cache-semantics@4.0.4': {}
 
   '@types/http-errors@2.0.4': {}
+
+  '@types/http-proxy@1.17.16':
+    dependencies:
+      '@types/node': 22.13.4
 
   '@types/json-schema@7.0.15': {}
 
@@ -6199,7 +6250,7 @@ snapshots:
 
   axios@1.7.9:
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.4.0)
       form-data: 4.0.2
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -6504,11 +6555,18 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
+  cookie-parser@1.4.7:
+    dependencies:
+      cookie: 0.7.2
+      cookie-signature: 1.0.6
+
   cookie-signature@1.0.6: {}
 
   cookie-signature@1.2.2: {}
 
   cookie@0.7.1: {}
+
+  cookie@0.7.2: {}
 
   cookie@1.0.2: {}
 
@@ -6836,6 +6894,8 @@ snapshots:
 
   etag@1.8.1: {}
 
+  eventemitter3@4.0.7: {}
+
   events@3.3.0: {}
 
   execa@5.1.1:
@@ -7027,7 +7087,9 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.9(debug@4.4.0):
+    optionalDependencies:
+      debug: 4.4.0
 
   foreground-child@3.3.0:
     dependencies:
@@ -7222,6 +7284,25 @@ snapshots:
       statuses: 2.0.1
       toidentifier: 1.0.1
 
+  http-proxy-middleware@3.0.3:
+    dependencies:
+      '@types/http-proxy': 1.17.16
+      debug: 4.4.0
+      http-proxy: 1.18.1(debug@4.4.0)
+      is-glob: 4.0.3
+      is-plain-object: 5.0.0
+      micromatch: 4.0.8
+    transitivePeerDependencies:
+      - supports-color
+
+  http-proxy@1.18.1(debug@4.4.0):
+    dependencies:
+      eventemitter3: 4.0.7
+      follow-redirects: 1.15.9(debug@4.4.0)
+      requires-port: 1.0.0
+    transitivePeerDependencies:
+      - debug
+
   http2-wrapper@2.2.1:
     dependencies:
       quick-lru: 5.1.1
@@ -7289,6 +7370,8 @@ snapshots:
   is-number@7.0.0: {}
 
   is-plain-obj@1.1.0: {}
+
+  is-plain-object@5.0.0: {}
 
   is-promise@4.0.0: {}
 
@@ -8003,6 +8086,8 @@ snapshots:
 
   require-from-string@2.0.2: {}
 
+  requires-port@1.0.0: {}
+
   resolve-alpn@1.2.1: {}
 
   resolve-from@4.0.0: {}
@@ -8120,7 +8205,7 @@ snapshots:
 
   send@1.1.0:
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
       destroy: 1.2.0
       encodeurl: 2.0.0
       escape-html: 1.0.3

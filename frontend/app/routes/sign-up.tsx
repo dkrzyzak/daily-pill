@@ -1,9 +1,26 @@
 import { Button } from 'primereact/button';
-import { Link, useLoaderData, type MetaFunction } from 'react-router';
+import {
+    useLoaderData,
+    type LoaderFunctionArgs,
+    type MetaFunction,
+} from 'react-router';
+import axios from '~/axios';
 
 export const meta: MetaFunction = () => [{ title: 'Daily Pill | Sign Up' }];
 
-export const loader = () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+    const cookies = request.headers.get('Cookie');
+    try {
+        // TODO: create endpoint that will just return "health check" of client - is he legit or not
+        // auth/verify is meant to be used internally by gateway middleware
+        const res = await axios.post('/auth/verify', {
+            headers: { Cookie: cookies },
+        });
+        console.log(res);
+    } catch (e) {
+        console.log(e);
+    }
+
     return {
         googleAuthUrl: `${process.env.API_GATEWAY_URL}/auth/google/login`,
     };
@@ -22,14 +39,14 @@ export default function SignUpPage() {
                 </h2>
             </section>
 
-            <Link to={googleAuthUrl}>
+            <a href={googleAuthUrl}>
                 <Button
                     icon="pi pi-google"
                     severity="info"
                     raised
                     label="Continue with Google"
                 />
-            </Link>
+            </a>
         </main>
     );
 }
