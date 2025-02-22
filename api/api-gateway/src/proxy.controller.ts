@@ -1,10 +1,11 @@
 import { AxiosError } from 'axios';
 import { HttpService } from '@nestjs/axios';
-import { All, Req, Res } from '@nestjs/common';
+import { All, Controller, Req, Res } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import { firstValueFrom } from 'rxjs';
 
+@Controller()
 export class ProxyController {
   constructor(
     private readonly httpService: HttpService,
