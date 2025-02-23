@@ -7,7 +7,8 @@
   "scripts": {
     "format": "prettier --write **/*.{ts,tsx}",
     "lint": "eslint **/*.{ts,tsx} --fix",
-    "api": "node run-api.js"
+    "api": "node run-api.js",
+    "front": "cd frontend && pnpm dev"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

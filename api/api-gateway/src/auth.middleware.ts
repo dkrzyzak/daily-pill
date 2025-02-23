@@ -15,7 +15,7 @@ export class AuthMiddleware implements NestMiddleware {
         private readonly configService: ConfigService,
     ) {}
 
-    async use(req: Request, res: Response, next: NextFunction) {
+    async use(req: Request, _res: Response, next: NextFunction) {
         const token = req.cookies['dp_token'] as string | undefined;
 
         if (!token) {
@@ -26,12 +26,12 @@ export class AuthMiddleware implements NestMiddleware {
             const authServiceUrl =
                 this.configService.get<string>('AUTH_SERVICE_URL');
 
-            const response = await firstValueFrom(
+            await firstValueFrom(
                 this.httpService.post(`${authServiceUrl}/auth/verify`, {
                     token,
                 }),
             );
-            req['user'] = response.data;
+
             next();
         } catch (e) {
             console.log(e);

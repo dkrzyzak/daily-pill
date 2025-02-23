@@ -1,6 +1,6 @@
-import { redirect, type LoaderFunction } from 'react-router';
+import { redirect, useLoaderData, type LoaderFunctionArgs } from 'react-router';
 import axios from '~/axios';
-import { isAxiosError } from 'axios';
+import { promised } from '~/utils/promised';
 
 export function meta() {
     return [
@@ -9,25 +9,31 @@ export function meta() {
     ];
 }
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
     const cookie = request.headers.get('cookie');
 
-    try {
-        // TODO: check login state in a better way
-        const x = await axios.get('/test', { headers: { Cookie: cookie } });
-        console.log(x);
-    } catch (error) {
-        console.log(error);
-        if (isAxiosError(error)) {
-            if (error.status === 401) {
-                throw redirect('/sign-up');
-            }
-        }
+    const [userRes, userErr] = await promised(
+        axios.get<GoogleProfileData>,
+        '/auth/user',
+        {
+            headers: { Cookie: cookie },
+        },
+    );
+
+    if (userErr) {
+        // isAxiosError(userErr) && userErr.status === 401
+        throw redirect('/sign-up');
     }
 
-    return {};
+    return { user: userRes.data };
 };
 
 export default function Home() {
-    return <h1>Home page</h1>;
+    const { user } = useLoaderData<typeof loader>();
+    console.log(user);
+    return (
+        <div>
+            <h1>Home page {user.given_name}</h1>
+        </div>
+    );
 }

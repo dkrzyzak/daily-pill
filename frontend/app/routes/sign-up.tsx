@@ -1,24 +1,24 @@
 import { Button } from 'primereact/button';
 import {
+    redirect,
     useLoaderData,
     type LoaderFunctionArgs,
     type MetaFunction,
 } from 'react-router';
 import axios from '~/axios';
+import { promised } from '~/utils/promised';
 
 export const meta: MetaFunction = () => [{ title: 'Daily Pill | Sign Up' }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
     const cookies = request.headers.get('Cookie');
-    try {
-        // TODO: create endpoint that will just return "health check" of client - is he legit or not
-        // auth/verify is meant to be used internally by gateway middleware
-        const res = await axios.post('/auth/verify', {
-            headers: { Cookie: cookies },
-        });
-        console.log(res);
-    } catch (e) {
-        console.log(e);
+
+    const [res] = await promised(axios.get<any>, '/auth/user', {
+        headers: { Cookie: cookies },
+    });
+
+    if (res?.status === 200) {
+        throw redirect('/');
     }
 
     return {

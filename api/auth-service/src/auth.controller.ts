@@ -5,13 +5,14 @@ import {
     Post,
     Query,
     Redirect,
+    Req,
     Res,
     UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthService } from './auth.service';
 import { JwtService } from './jwt.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -63,5 +64,15 @@ export class AuthController {
         }
 
         return result;
+    }
+
+    @Get('user')
+    async verify(@Req() req: Request) {
+        // if the request gets there through the middleware, 
+        // it means the user is valid and token is also valid
+        const token = req.cookies['dp_token'] as string;
+        const parsedUserData = (await this.jwtService.verifyJWT(token))!;
+        
+        return parsedUserData;
     }
 }

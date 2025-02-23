@@ -18,7 +18,6 @@ export class ProxyController {
 
     @All('*')
     async proxy(@Req() req: Request, @Res() res: Response) {
-        console.log(req['user']);
         this.proxyMiddleware(req, res, (err) => {
             if (err) {
                 console.log(err);
