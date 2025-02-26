@@ -161,6 +161,134 @@ importers:
         specifier: ^5.7.3
         version: 5.7.3
 
+  api/medicine-service:
+    dependencies:
+      '@nestjs/axios':
+        specifier: ^4.0.0
+        version: 4.0.0(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.1)(rxjs@7.8.2)
+      '@nestjs/common':
+        specifier: ^11.0.10
+        version: 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/config':
+        specifier: ^4.0.0
+        version: 4.0.0(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs/core':
+        specifier: ^11.0.10
+        version: 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/platform-express':
+        specifier: ^11.0.10
+        version: 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)
+      axios:
+        specifier: ^1.8.1
+        version: 1.8.1
+      cookie-parser:
+        specifier: ^1.4.7
+        version: 1.4.7
+      jose:
+        specifier: ^5.10.0
+        version: 5.10.0
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      rxjs:
+        specifier: ^7.8.2
+        version: 7.8.2
+    devDependencies:
+      '@nestjs/cli':
+        specifier: ^11.0.5
+        version: 11.0.5(@swc/cli@0.6.0(@swc/core@1.11.1)(chokidar@4.0.3))(@swc/core@1.11.1)(@types/node@22.13.5)
+      '@nestjs/schematics':
+        specifier: ^11.0.1
+        version: 11.0.1(chokidar@4.0.3)(typescript@5.7.3)
+      '@swc/cli':
+        specifier: ^0.6.0
+        version: 0.6.0(@swc/core@1.11.1)(chokidar@4.0.3)
+      '@swc/core':
+        specifier: ^1.11.1
+        version: 1.11.1
+      '@types/cookie-parser':
+        specifier: ^1.4.8
+        version: 1.4.8(@types/express@5.0.0)
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.0
+      '@types/node':
+        specifier: ^22.13.5
+        version: 22.13.5
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
+
+  api/schedule-service:
+    dependencies:
+      '@nestjs/axios':
+        specifier: ^4.0.0
+        version: 4.0.0(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(axios@1.8.1)(rxjs@7.8.2)
+      '@nestjs/common':
+        specifier: ^11.0.10
+        version: 11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/config':
+        specifier: ^4.0.0
+        version: 4.0.0(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@nestjs/core':
+        specifier: ^11.0.10
+        version: 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.0.10)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/platform-express':
+        specifier: ^11.0.10
+        version: 11.0.10(@nestjs/common@11.0.10(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.10)
+      axios:
+        specifier: ^1.8.1
+        version: 1.8.1
+      cookie-parser:
+        specifier: ^1.4.7
+        version: 1.4.7
+      jose:
+        specifier: ^5.10.0
+        version: 5.10.0
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      rxjs:
+        specifier: ^7.8.2
+        version: 7.8.2
+    devDependencies:
+      '@nestjs/cli':
+        specifier: ^11.0.5
+        version: 11.0.5(@swc/cli@0.6.0(@swc/core@1.11.1)(chokidar@4.0.3))(@swc/core@1.11.1)(@types/node@22.13.5)
+      '@nestjs/schematics':
+        specifier: ^11.0.1
+        version: 11.0.1(chokidar@4.0.3)(typescript@5.7.3)
+      '@swc/cli':
+        specifier: ^0.6.0
+        version: 0.6.0(@swc/core@1.11.1)(chokidar@4.0.3)
+      '@swc/core':
+        specifier: ^1.11.1
+        version: 1.11.1
+      '@types/cookie-parser':
+        specifier: ^1.4.8
+        version: 1.4.8(@types/express@5.0.0)
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.0
+      '@types/node':
+        specifier: ^22.13.5
+        version: 22.13.5
+      source-map-support:
+        specifier: ^0.5.21
+        version: 0.5.21
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
+
   frontend:
     dependencies:
       '@hookform/resolvers':
