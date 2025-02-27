@@ -1,15 +1,14 @@
 import { z, type ZodTypeAny } from 'zod';
 
-const medicineCategory = z.enum(['supplement', 'medical']);
+export const medicineType = z.enum(['pill', 'cream', 'spray', 'aerosol', 'drops', 'other']);
 
 export const preprocessNumber = <I extends ZodTypeAny>(schema: I) =>
     z.preprocess((val) => parseFloat(val as string), schema);
 
 export const medicineSchema = z.object({
     name: z.string().min(2, 'Missing name'),
-    category: medicineCategory,
 
-    quantifiable: z.boolean(),
+    type: medicineType,
     quantity: preprocessNumber(z.number().positive()).optional(),
 
     refillAlert: z.boolean(),
@@ -17,12 +16,11 @@ export const medicineSchema = z.object({
 });
 
 export type MedicineFormData = z.infer<typeof medicineSchema>;
-export type Category = MedicineFormData['category'];
+export type MedicineForm = z.infer<typeof medicineType>;
 
 export const medicineInitialData: MedicineFormData = {
     name: '',
-    category: 'medical',
-    quantifiable: true,
+    type: 'pill',
     quantity: 30,
     refillAlert: true,
     refillAlertAt: 7,

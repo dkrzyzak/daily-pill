@@ -31,6 +31,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function Home() {
     const { user } = useLoaderData<typeof loader>();
+    console.log(user);
+
     return (
         <div>
             <h1 className="text-4xl">Hello, {user.given_name}!</h1>
