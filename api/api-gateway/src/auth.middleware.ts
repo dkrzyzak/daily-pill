@@ -26,12 +26,13 @@ export class AuthMiddleware implements NestMiddleware {
             const authServiceUrl =
                 this.configService.get<string>('AUTH_SERVICE_URL');
 
-            await firstValueFrom(
+            const userPayload = await firstValueFrom(
                 this.httpService.post(`${authServiceUrl}/auth/verify`, {
                     token,
                 }),
             );
 
+            req.headers['X-User-ID'] = userPayload.data.id;
             next();
         } catch (e) {
             console.log(e);

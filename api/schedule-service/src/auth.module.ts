@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
-import { JwtService } from './jwt.service';
+import { ScheduleModule } from './schedule/schedule.module';
 
 @Module({
   imports: [
@@ -11,8 +9,7 @@ import { JwtService } from './jwt.service';
       isGlobal: true,
     }),
     HttpModule,
+    ScheduleModule,
   ],
-  controllers: [AuthController],
-  providers: [AuthService, JwtService]
 })
 export class AppModule {}

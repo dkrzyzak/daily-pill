@@ -9,8 +9,7 @@ import {
 } from '@nestjs/common';
 import { MedicineService } from './medicine.service';
 import { CreateMedicineDto, UpdateMedicineDto } from './medicine.dto';
-
-const userId = 'to be taken from cookies';
+import { UserId } from 'src/helpers';
 
 @Controller('medicine')
 export class MedicineController {
@@ -22,17 +21,18 @@ export class MedicineController {
     }
 
     @Get()
-    findAll() {
+    findAll(@UserId() userId: string) {
         return this.medicineService.findAll(userId);
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
+    findOne(@UserId() userId: string, @Param('id') id: string) {
         return this.medicineService.findOne(userId, id);
     }
 
     @Patch(':id')
     update(
+        @UserId() userId: string,
         @Param('id') id: string,
         @Body() updateMedicineDto: UpdateMedicineDto,
     ) {
@@ -41,6 +41,7 @@ export class MedicineController {
 
     @Patch(':id/update-quantity')
     updateQuantity(
+        @UserId() userId: string,
         @Param('id') id: string,
         @Body('newAmount') newAmount: number,
     ) {
@@ -48,7 +49,7 @@ export class MedicineController {
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
+    remove(@UserId() userId: string, @Param('id') id: string) {
         return this.medicineService.remove(userId, id);
     }
 }
