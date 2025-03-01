@@ -9,7 +9,7 @@ export class ScheduleService {
     constructor(
         @InjectRepository(Schedule)
         private scheduleRepository: Repository<Schedule>,
-        private readonly medicineService: any,
+        // private readonly medicineService: any,
     ) {}
 
     async create(createScheduleDto: CreateScheduleDto) {

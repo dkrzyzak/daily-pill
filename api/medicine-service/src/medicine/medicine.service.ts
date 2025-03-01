@@ -11,8 +11,11 @@ export class MedicineService {
         private medicineRepository: Repository<Medicine>,
     ) {}
 
-    async create(createMedicineDto: CreateMedicineDto) {
-        const medicine = this.medicineRepository.create(createMedicineDto);
+    async create(createMedicineDto: CreateMedicineDto, userId: string) {
+        const medicine = this.medicineRepository.create({
+            ...createMedicineDto,
+            userId,
+        });
         return this.medicineRepository.save(medicine);
     }
 

@@ -3,10 +3,6 @@ import { IsNumber, IsOptional, IsNotEmpty, IsString } from 'class-validator';
 
 // TODO: sync with frontend
 export class CreateMedicineDto {
-    @IsNotEmpty({ message: "Missing or empty 'userId' parameter" })
-    @IsString({ message: "Parameter 'userId' must be string" })
-    userId: string;
-
     @IsNotEmpty({ message: "Missing or empty 'name' parameter" })
     @IsString({ message: "Parameter 'name' must be string" })
     name: string;

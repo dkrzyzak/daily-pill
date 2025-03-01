@@ -11,13 +11,16 @@ import { MedicineService } from './medicine.service';
 import { CreateMedicineDto, UpdateMedicineDto } from './medicine.dto';
 import { UserId } from 'src/helpers';
 
-@Controller('medicine')
+@Controller('medicines')
 export class MedicineController {
     constructor(private readonly medicineService: MedicineService) {}
 
     @Post()
-    create(@Body() createMedicineDto: CreateMedicineDto) {
-        return this.medicineService.create(createMedicineDto);
+    create(
+        @Body() createMedicineDto: CreateMedicineDto,
+        @UserId() userId: string,
+    ) {
+        return this.medicineService.create(createMedicineDto, userId);
     }
 
     @Get()
