@@ -10,10 +10,14 @@ import {
 
 import type { Route } from './+types/root';
 import './app.css';
+import { Toaster } from 'sonner';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export const links: Route.LinksFunction = () => [
     { rel: 'icon', href: '/pill.svg', type: 'image/svg' },
 ];
+
+const queryClient = new QueryClient();
 
 export function Layout({ children }: { children: React.ReactNode }) {
     return (
@@ -28,11 +32,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Links />
             </head>
             <body>
-                <PrimeReactProvider>
-                    {children}
-                    <ScrollRestoration />
-                    <Scripts />
-                </PrimeReactProvider>
+                <Toaster richColors position='top-right' />
+                <QueryClientProvider client={queryClient}>
+                    <PrimeReactProvider>
+                        {children}
+                        <ScrollRestoration />
+                        <Scripts />
+                    </PrimeReactProvider>
+                </QueryClientProvider>
             </body>
         </html>
     );
