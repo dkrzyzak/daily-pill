@@ -6,12 +6,13 @@ import {
     medicineSchema,
     type MedicineFormData,
 } from './constants';
-import { RefillInput } from './form-controls/refill-input';
+import { QuantityInput } from './form-controls/quantity-input';
 import { TypeInput } from './form-controls/type-input';
 import { Button } from 'primereact/button';
 import { useMutation } from '@tanstack/react-query';
-import axios from '~/axios';
 import { toast } from 'sonner';
+import { createMedicine } from '~/requests';
+import { prepareMedicineData } from './helpers';
 
 export function MedicineForm() {
     const form = useForm<MedicineFormData>({
@@ -20,9 +21,9 @@ export function MedicineForm() {
     });
 
     const medicineMutation = useMutation({
-        mutationFn: (data: MedicineFormData) => axios.post('/medicines', data),
-        onSuccess: (data: unknown) => {
-            console.log(data);
+        mutationFn: (data: MedicineFormData) => createMedicine(prepareMedicineData(data)),
+        onSuccess: (response) => {
+            console.log(response);
             toast.success('Created new medicine');
         },
         onError: (error) => {
@@ -54,7 +55,7 @@ export function MedicineForm() {
 
                 <TypeInput />
 
-                <RefillInput />
+                <QuantityInput />
 
                 <Button
                     icon="pi pi-arrow-right"

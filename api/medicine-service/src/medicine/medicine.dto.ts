@@ -14,6 +14,10 @@ export class CreateMedicineDto {
     @IsNumber()
     @IsOptional()
     quantity: number;
+
+    @IsNumber()
+    @IsOptional()
+    refillNotification: number;
 }
 
 export class UpdateMedicineDto extends PartialType(CreateMedicineDto) {}

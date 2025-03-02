@@ -1,11 +1,10 @@
 import { Dropdown } from 'primereact/dropdown';
 import type { SelectItem } from 'primereact/selectitem';
 import { useFormContext } from 'react-hook-form';
-import type { MedicineForm, MedicineFormData } from '../constants';
-import { TextInput } from '~/components/text-input';
+import type { MedicineType, MedicineFormData } from '../constants';
 
 interface FormSelectItem extends SelectItem {
-    value: MedicineForm;
+    value: MedicineType;
 }
 
 const options: FormSelectItem[] = [
@@ -18,9 +17,8 @@ const options: FormSelectItem[] = [
 ];
 
 export function TypeInput() {
-    const { watch, setValue, register } = useFormContext<MedicineFormData>();
+    const { watch, setValue } = useFormContext<MedicineFormData>();
     const type = watch('type');
-    const quantifiable = type === 'pill';
 
     return (
         <div className="grid gap-2">
@@ -30,17 +28,9 @@ export function TypeInput() {
                     inputId="type"
                     options={options}
                     value={type}
-                    onChange={(e) => setValue('type', e.value as MedicineForm)}
+                    onChange={(e) => setValue('type', e.value as MedicineType)}
                 />
             </div>
-
-            {quantifiable && (
-                <TextInput
-                    id="quantity"
-                    label="Quantity"
-                    {...register('quantity')}
-                />
-            )}
         </div>
     );
 }
