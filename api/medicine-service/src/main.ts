@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
 
-NestFactory.create(AppModule).then((app) => {
+NestFactory.create(AppModule, { logger: ['warn', 'error'] }).then((app) => {
     app.use(cookieParser());
 
     app.useGlobalPipes(
