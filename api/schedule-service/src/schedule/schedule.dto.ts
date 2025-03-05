@@ -12,9 +12,6 @@ export class CreateScheduleDto {
     @IsUUID()
     medicineId: string;
 
-    @IsString()
-    userId: string;
-
     @IsDate()
     startDate: Date;
 

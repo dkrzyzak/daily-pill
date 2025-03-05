@@ -6,8 +6,11 @@ import {
 } from './constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'primereact/button';
+import { useMedicineContext } from './medicine-context';
+import { DosageInput } from './form-controls/dosage-input';
 
 export function ScheduleForm() {
+    const { medicine } = useMedicineContext();
     const form = useForm<ScheduleFormData>({
         defaultValues: scheduleInitialData,
         resolver: zodResolver(scheduleSchema),
@@ -26,6 +29,10 @@ export function ScheduleForm() {
                     },
                 )}
             >
+                <div className="border-2 bg-pink-900">{medicine.name}</div>
+
+                <DosageInput medicine={medicine} />
+
                 <Button
                     icon="pi pi-arrow-right"
                     iconPos="right"

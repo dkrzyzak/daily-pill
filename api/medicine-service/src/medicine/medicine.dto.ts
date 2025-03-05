@@ -20,4 +20,6 @@ export class CreateMedicineDto {
     refillNotification: number;
 }
 
+// TODO: details: expiry date, picture? icon? 
+
 export class UpdateMedicineDto extends PartialType(CreateMedicineDto) {}

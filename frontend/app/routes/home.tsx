@@ -3,7 +3,7 @@ import axios from '~/axios';
 import { promised } from '~/utils/promised';
 import { MedicineFormTrigger } from '~/modules/medicine-form/medicine-form-trigger';
 import type { MedicineDto } from '~/apiModels';
-import { MedicineItem } from '~/modules/medicine-item/medicine-item';
+import { MedicineList } from '~/modules/medicine-list/medicine-list';
 
 export function meta() {
     return [
@@ -49,14 +49,7 @@ export default function Home() {
                 <MedicineFormTrigger />
             </section>
 
-            <section className='mt-12'>
-                <h1 className='text-3xl'>Medicine you have:</h1>
-                <div className='grid gap-4'>
-                    {medicines.map((medicine) => (
-                        <MedicineItem key={medicine.id} medicine={medicine} />
-                    ))}
-                </div>
-            </section>
+            <MedicineList medicines={medicines} className='mt-12' />
         </div>
     );
 }
