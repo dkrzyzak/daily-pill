@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'primereact/button';
 import { useMedicineContext } from './medicine-context';
 import { DosageInput } from './form-controls/dosage-input';
+import { FrequencyInput } from './form-controls/frequency-input';
 
 export function ScheduleForm() {
     const { medicine } = useMedicineContext();
@@ -20,7 +21,7 @@ export function ScheduleForm() {
         <FormProvider {...form}>
             <form
                 className="grid gap-4"
-                onClick={form.handleSubmit(
+                onSubmit={form.handleSubmit(
                     (data) => {
                         console.log(data);
                     },
@@ -29,9 +30,11 @@ export function ScheduleForm() {
                     },
                 )}
             >
-                <div className="border-2 bg-pink-900">{medicine.name}</div>
+                <p className="border-surface-200 border p-2 bg-surface-section/50 text-white/75">{medicine.name}</p>
 
                 <DosageInput medicine={medicine} />
+
+                <FrequencyInput />
 
                 <Button
                     icon="pi pi-arrow-right"

@@ -3,11 +3,11 @@ import type { SelectItem } from 'primereact/selectitem';
 import { useFormContext } from 'react-hook-form';
 import type { MedicineType, MedicineFormData } from '../constants';
 
-interface FormSelectItem extends SelectItem {
+interface TypeSelectItem extends SelectItem {
     value: MedicineType;
 }
 
-const options: FormSelectItem[] = [
+const options: TypeSelectItem[] = [
     { label: 'Pill', value: 'pill' },
     { label: 'Cream', value: 'cream' },
     { label: 'Aerosol', value: 'aerosol' },

@@ -13,8 +13,15 @@ import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { createMedicine } from '~/requests';
 import { prepareMedicineData } from './helpers';
+import { useRevalidator } from 'react-router';
 
-export function MedicineForm() {
+interface MedicineFormProps {
+    onHide: () => void;
+}
+
+export function MedicineForm({ onHide }: MedicineFormProps) {
+    const revalidator = useRevalidator();
+
     const form = useForm<MedicineFormData>({
         defaultValues: medicineInitialData,
         resolver: zodResolver(medicineSchema),
@@ -22,8 +29,10 @@ export function MedicineForm() {
 
     const medicineMutation = useMutation({
         mutationFn: (data: MedicineFormData) => createMedicine(prepareMedicineData(data)),
-        onSuccess: (response) => {
-            console.log(response);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        onSuccess: (_response) => {
+            revalidator.revalidate();
+            onHide();
             toast.success('Created new medicine');
         },
         onError: (error) => {

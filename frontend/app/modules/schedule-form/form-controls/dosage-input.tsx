@@ -22,8 +22,8 @@ export function DosageInput({ medicine }: DosageInputProps) {
 
     return (
         <TextInput
-            id="name"
-            label="Name"
+            id="dosage"
+            label="How many pills?"
             {...register('dosage')}
             autoComplete="off"
         />

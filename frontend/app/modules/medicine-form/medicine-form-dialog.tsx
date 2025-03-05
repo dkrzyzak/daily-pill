@@ -18,7 +18,7 @@ export function MedicineFormDialog({
             onHide={onHide}
             header="New medicine"
         >
-            <MedicineForm />
+            <MedicineForm onHide={onHide} />
         </Dialog>
     );
 }
